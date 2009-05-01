@@ -1,0 +1,35 @@
+h1. Shortweet Rails App
+
+I decided to challenge myself to make a simple application that shortens a URL you post to it and also allow for the ability to send it to Twitter. I know there are plenty of services out there that already offer this such as bit.ly, but a challenge is a challenge. So was born Shortweet. Since it's just a challenge project, it comes as is.
+
+h2. Setup
+
+After cloning/downloading:
+
+* in config, rename example.database.yml to database.yml and change to your settings for your database
+* in config/environments, rename example.development.rb to development.rb
+* rake db:create; rake db:migrate;
+
+h3. Accessing twitter
+
+In the development.rb environment file, you will need to place in your Twitter keys that they gave to you. To obtain these keys, you will need to sign up for them:
+
+http://twitter.com/oauth_clients/new
+
+*Note:* Currently, twitter does not allow for callbacks to localhost:port for development testing. If you are planning on developing on your localhost, you must change your /etc/hosts file to fake a DNS for twitter to call back to.
+
+When filling out the callback field for twitter application, make sure the url ends with:
+
+<pre>
+  /callback
+</pre>
+
+This will make sure that twitter sends back to the correct action for the verification process to store the user's token and secret.
+
+h3. Restful Authentication Plugin
+
+Clone to the vendor/plugins folder
+
+<pre>
+  git clone git://github.com/technoweenie/restful-authentication.git /vendor/plugins/restful_authentication
+</pre>
