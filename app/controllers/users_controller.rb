@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :login_required, :except=>[:new]
+  before_filter :login_required, :except=>[:new, :create]
   
   def index
     
