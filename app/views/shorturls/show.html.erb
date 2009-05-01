@@ -1,0 +1,13 @@
+<p>
+  <b>Target url:</b>
+  <%=h @shorturl.target_url %>
+</p>
+
+<p>
+  <b>Keyword:</b>
+  <%=h @shorturl.keyword %>
+</p>
+
+
+<%= link_to 'Edit', edit_shorturl_path(@shorturl) %> |
+<%= link_to 'Back', shorturls_path %>

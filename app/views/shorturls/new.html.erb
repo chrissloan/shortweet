@@ -1,0 +1,19 @@
+<h1>New shorturl</h1>
+
+<% form_for(@shorturl) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :target_url %><br />
+    <%= f.text_field :target_url %>
+  </p>
+  <p>
+    <%#= f.label :keyword %><br />
+    <%#= f.text_field :keyword %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', shorturls_path %>

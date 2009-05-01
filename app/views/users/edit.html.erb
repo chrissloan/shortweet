@@ -1,0 +1,9 @@
+<h1>Edit account information</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+  <dl>
+    <%= render :partial=>"form", :locals=>{:f => f} %>
+    <dd><%= submit_tag 'Update' %></dd>
+  </dl>
+<% end %>

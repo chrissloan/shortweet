@@ -1,0 +1,24 @@
+<h1>Listing shorturls</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Short</th>
+    <th>Target URL</th>
+  </tr>
+
+<% @shorturls.each do |shorturl| %>
+  <tr>
+    <td><%=h shorturl.id %></td>
+    <td><%= link_to "#{shortenify(shorturl.id)}", shortenify(shorturl.id) %></td>
+    <td><%=h shorturl.target_url %></td>
+    <td><%= link_to 'Show', shorturl %></td>
+    <td><%= link_to 'Edit', edit_shorturl_path(shorturl) %></td>
+    <td><%= link_to 'Destroy', shorturl, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+Bookmarklet: <%= link_to "Shorten this URL", "javascript:location.href='#{http_base}/add_url?u='+encodeURIComponent(location.href)" %>
+<br />
+<%= debug(@url_avail) %><br/>
+<%= link_to 'New shorturl', new_shorturl_path %>

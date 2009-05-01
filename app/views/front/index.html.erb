@@ -1,0 +1,26 @@
+<h1>Shortweet</h1>
+<p>Simple URL shortener and Twitter link to share that URL.</p>
+<% if @shorturl.id %>
+<%= text_field_tag(:shorturl,shortenify(@shorturl.id)) %>
+<%= link_to "Shorten another url", root_path %>
+<% else %>
+<% form_for(@shorturl) do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag "from_front", true %>
+  <dl>
+    <dt><%= label_tag 'target_url', "URL to shorten" %></dt>
+    <dd><%= f.text_field :target_url %></dd>
+    <dd><%= f.submit 'Shorten' %></dd>
+  </dl>
+<% end %>
+<% end %>
+
+<% if logged_in? and @shorturl.id and current_user.twitter_username != nil %>
+  <% form_tag( { :controller=>"users", :action => 'send_tweet' }) do %>
+  <dl>
+    <dt>Post your tweet</dt>
+    <dd><%= text_area_tag(:tweet, shortenify(@shorturl.id), :rows=>5, :cols=>50 ) %></dd>
+    <dd><%= submit_tag "Post" %></dd>
+  </dl>
+  <% end %>
+<% end %>

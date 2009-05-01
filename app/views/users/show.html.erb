@@ -1,0 +1,19 @@
+<h1>Your information</h1>
+<%= link_to "Edit", edit_user_path %><br/><br/>
+<strong>Login:</strong> <%= @user.login %><br/>
+<strong>Name:</strong> <%= @user.name %><br/>
+<strong>Email:</strong> <%= @user.email %><br/>
+<hr />
+<strong>Twitter Account:</strong> 
+<% if @user.twitter_username != nil %>
+  <%= @user.twitter_username %> | <%= link_to "change account", twitter_request_path %>
+  
+  <h2>Your Timeline</h2>
+  <% @statuses.each do |status| %>
+    <%= status.text %><br/><br/>
+  <% end %>
+  
+<% else %>
+  <%= link_to "Link to Twitter", twitter_request_path %>
+<% end %>
+
